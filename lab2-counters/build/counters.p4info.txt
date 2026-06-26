@@ -1,0 +1,188 @@
+pkg_info {
+  arch: "v1model"
+}
+tables {
+  preamble {
+    id: 44186319
+    name: "MyIngress.flow_stats"
+    alias: "flow_stats"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.srcAddr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "hdr.ipv4.dstAddr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 33081163
+  }
+  action_refs {
+    id: 21257015
+  }
+  direct_resource_ids: 333137783
+  size: 256
+}
+tables {
+  preamble {
+    id: 45569621
+    name: "MyIngress.ipv4_forward"
+    alias: "ipv4_forward"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.dstAddr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 25797781
+  }
+  action_refs {
+    id: 25652968
+  }
+  size: 64
+}
+actions {
+  preamble {
+    id: 21257015
+    name: "NoAction"
+    alias: "NoAction"
+    annotations: "@noWarn(\"unused\")"
+  }
+}
+actions {
+  preamble {
+    id: 25652968
+    name: "MyIngress.drop"
+    alias: "drop"
+  }
+}
+actions {
+  preamble {
+    id: 33081163
+    name: "MyIngress.count_flow"
+    alias: "count_flow"
+  }
+  params {
+    id: 1
+    name: "flow_id"
+    bitwidth: 32
+  }
+}
+actions {
+  preamble {
+    id: 25797781
+    name: "MyIngress.set_egress"
+    alias: "set_egress"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+}
+counters {
+  preamble {
+    id: 311483616
+    name: "MyIngress.proto_counter"
+    alias: "proto_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  size: 4
+}
+direct_counters {
+  preamble {
+    id: 333137783
+    name: "MyIngress.flow_counter"
+    alias: "flow_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 44186319
+}
+registers {
+  preamble {
+    id: 374610436
+    name: "MyIngress.flow_bytes"
+    alias: "flow_bytes"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 373696309
+    name: "MyIngress.flow_pkts"
+    alias: "flow_pkts"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 381336785
+    name: "MyIngress.flow_elephant"
+    alias: "flow_elephant"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 385040708
+    name: "MyIngress.elephant_threshold"
+    alias: "elephant_threshold"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 1
+}
+registers {
+  preamble {
+    id: 373979494
+    name: "MyIngress.last_pkt_size"
+    alias: "last_pkt_size"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 1
+}
+type_info {
+}
