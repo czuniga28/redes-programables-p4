@@ -1,0 +1,18 @@
+# Plano de control de s2 (thrift / simple_switch_CLI)
+# Puertos: 1 -> h2 (10.0.2.0/24) | 2 -> s1 (10.0.12.0/24) | 3 -> s3 (10.0.23.0/24)
+#
+# Tabla de enrutamiento LPM
+table_add ipv4_lpm ipv4_forward 10.0.1.0/24 => 00:00:00:01:02:00 2
+table_add ipv4_lpm ipv4_forward 10.0.2.0/24 => 08:00:00:00:02:22 1
+table_add ipv4_lpm ipv4_forward 10.0.3.0/24 => 00:00:00:03:03:00 3
+table_add ipv4_lpm ipv4_forward 10.0.4.0/24 => 00:00:00:03:03:00 3
+
+# Reescritura de MAC origen segun puerto de salida
+table_add smac_rewrite set_smac 1 => 00:00:00:02:01:00
+table_add smac_rewrite set_smac 2 => 00:00:00:02:02:00
+table_add smac_rewrite set_smac 3 => 00:00:00:02:03:00
+
+# (Opcional) Identidad de interfaz para ICMP Time Exceeded
+table_add icmp_responder send_icmp_time_exceeded 1 => 00:00:00:02:01:00 10.0.2.254
+table_add icmp_responder send_icmp_time_exceeded 2 => 00:00:00:02:02:00 10.0.12.2
+table_add icmp_responder send_icmp_time_exceeded 3 => 00:00:00:02:03:00 10.0.23.2
