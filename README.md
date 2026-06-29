@@ -4,7 +4,7 @@ Router IPv4 estático + Contadores y estadísticas de tráfico, implementados en
 **P4** sobre **BMv2** y **Mininet**.
 
 **Fecha de entrega:** 29 de junio de 2026
-**Autores:** [Autor 1] · [Autor 2]
+**Autores:** Christopher Zúñiga · Adrian Hernandez
 
 ---
 
@@ -27,9 +27,9 @@ Router IPv4 estático + Contadores y estadísticas de tráfico, implementados en
 ├── utils/
 │   └── p4_mininet.py     # clases Mininet P4Host / P4Switch (compartidas)
 ├── informe/
-│   ├── informe.pdf       # informe de investigación (Parte I)
-│   └── informe.tex       # fuente LaTeX (formato IEEE)
-├── demo.mp4              # video demostrativo (≤ 5 min) — ver VIDEO.md
+│   └── informe.pdf       # informe de investigación (Parte I)
+├── video.mp4         
+│    └── link.txt          # link al video demostrativo
 └── README.md
 ```
 
@@ -167,12 +167,4 @@ Para recompilar el PDF:
 
 ```bash
 cd informe && pdflatex informe.tex && pdflatex informe.tex
-```
-
-## Video demostrativo
-
-Ver `VIDEO.md` para el guion sugerido (≤5 min). Coloca el archivo como
-`demo.mp4` en la raíz o enlaza aquí el video subido.
-```
-Enlace al video: <pendiente>
 ```
