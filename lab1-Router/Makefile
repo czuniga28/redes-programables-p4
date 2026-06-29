@@ -19,7 +19,7 @@ $(JSON): $(P4_SRC)
 
 # Compila (si hace falta) y lanza la topologia. Requiere sudo (Mininet).
 run: all
-	sudo python3 topology.py
+	sudo /home/p4/src/p4dev-python-venv/bin/python3 topology.py
 
 clean:
 	rm -rf $(BUILD_DIR)
