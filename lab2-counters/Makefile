@@ -18,7 +18,7 @@ $(JSON): $(P4_SRC)
 		-o $(JSON) $(P4_SRC)
 
 run: all
-	sudo python3 topology.py
+	sudo /home/p4/src/p4dev-python-venv/bin/python3 topology.py
 
 clean:
 	rm -rf $(BUILD_DIR)
